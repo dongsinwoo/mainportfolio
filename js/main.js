@@ -163,6 +163,18 @@ const mSlide= (e)=>{
   Mpage.textContent = `${MpageCount} / ${MpagesCount}`
 }
 
+
+const topScroll = ()=>{
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let height1 = document.documentElement.scrollHeight; 
+  let height2 = document.documentElement.clientHeight;
+  let height = height1 - height2
+  let scrolled = (winScroll / height) * 100;
+  document.querySelector(".scroll-bar").style.width = scrolled + "%";
+  console.log(winScroll)
+}  
+
+
 page.textContent = `${pageCount} / ${pagesCount/2}`
 Mpage.textContent = `${MpageCount} / ${MpagesCount}`
 arrow.addEventListener("click",slide);
@@ -197,6 +209,8 @@ window.addEventListener("scroll",()=>{
   wel1.style.transform = `translate(${wt}px)`
   wel2.style.transform = `translate(${-wt}px)`
   
+  topScroll()
+
   // area2 ~ area7
   if(area2>wt){
     one.style.transform = `scale(1)`;
