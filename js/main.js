@@ -365,10 +365,10 @@ window.addEventListener("resize",(e)=>{
     footerBox
     footerHeight
   }else{
-    // window.addEventListener("mouseover",()=>{
-    //     window.location.reload()
-    //   })
-    // window.scrollTo(0, 0);
+    window.addEventListener("mouseover",()=>{
+        window.location.reload()
+      })
+    window.scrollTo(0, 0);
     profileBox
     projectBox
     projectHeigth 
