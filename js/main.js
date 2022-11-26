@@ -179,22 +179,6 @@ page.textContent = `${pageCount} / ${pagesCount/2}`
 Mpage.textContent = `${MpageCount} / ${MpagesCount}`
 arrow.addEventListener("click",slide);
 Marrow.addEventListener("click",mSlide);
-window.addEventListener("resize",()=>{
-  itemWidth = projectItems[0].clientWidth +margin;
-  projectCount = 0; //슬라이드 번호
-  translate = 0; //슬라이드 위치값
-  pageCount = 1;
-  projectSlide.style.transform = `translateX(${translate*2}px)`
-  page.textContent = `${pageCount} / ${pagesCount/2}`
-
-  MitemWidth = MprojectItems[0].clientWidth+Mmargin;
-  MprojectCount = 0; //슬라이드 번호
-  Mtranslate = 0; //슬라이드 위치값
-  MpageCount = 1;
-  MprojectSlide.style.transform= `translateX(${Mtranslate}px)`;
-  Mpage.textContent = `${MpageCount} / ${MpagesCount}`
-});
-
 
 window.addEventListener("scroll",()=>{
   // area2~10
@@ -228,9 +212,9 @@ window.addEventListener("scroll",()=>{
     one.style.opacity = 1
     one.style.display = "block"
     if(window.innerWidth <= 1000){
-      one.style.transform = `scale(${wt/120})`;
+      one.style.transform = `scale(${wt/120}) rotate(0.01deg)`;
     }else{
-      one.style.transform = `scale(${wt/80})`;
+      one.style.transform = `scale(${wt/80}) rotate(0.01deg)`;
     }
     body.style.backgroundColor = "";
     header.classList.remove("main");
@@ -389,12 +373,6 @@ window.addEventListener("resize",(e)=>{
     footerBox
     footerHeight
   }
-
-  // if(window.innerWidth > 500){
-  //   window.addEventListener("mouseover",()=>{
-  //     window.location.reload()
-  //   })
-  // }
 })
 
 AOS.init();

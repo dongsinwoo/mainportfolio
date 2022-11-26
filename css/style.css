@@ -25,6 +25,7 @@ body{
   width: 0%;
   height: 100%;
   background-color: #a4ffb1;
+  transition: all 0.35s;
 }
 /*// scrollbar */
 
@@ -182,7 +183,7 @@ header nav .head-menu:hover:before{
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px));
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -653,6 +654,10 @@ header nav .head-menu:hover:before{
   }
 
   /* projectslide */
+  .project-box{
+    height: auto;
+    padding-top: 6.25rem;
+  }
   .project-slide{
     width: 1000px;
   }
