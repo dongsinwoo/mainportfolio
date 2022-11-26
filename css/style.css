@@ -52,6 +52,7 @@ header{
   color: #fff;
 }
 
+
 header nav .head-menu2::before,
 header nav .head-menu2::after{
   content: "";
@@ -181,20 +182,24 @@ header nav .head-menu:hover:before{
 /* one */
 .one{
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(calc(-50% + 0.5px), calc(-50% + 0.5px)  perspective(1px) translateZ(0) rotate(0.001deg));
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
   transition: all 0.35s;
-  z-index: 100;
-  backface-visibility: hidden;
+}
+
+.one .one-item{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   background-color: #343434;
-  display: inline-block;
-  border: 10px solid #343434;
+  backface-visibility: hidden;
+  transition: all 0.35s;
 }
 /* //one */
 

@@ -5,6 +5,7 @@ const wel2 = document.querySelector(".bottom");
 
 // one
 const one = document.querySelector(".one");
+const oneItem = document.querySelector(".one-item");
 
 // body
 const body = document.body
@@ -196,7 +197,8 @@ window.addEventListener("scroll",()=>{
 
   // area2 ~ area7
   if(area2>wt){
-    one.style.transform = `scale(1)`;
+    oneItem.style.width = ``;
+    oneItem.style.height = ``;
     one.style.opacity = 0;
     pagenations[0].classList.add("scale12");
     pagenations[0].classList.remove("scale12w");
@@ -209,14 +211,15 @@ window.addEventListener("scroll",()=>{
   }
   else if(area2<=wt && area7 > wt){
     one.style.opacity = 1
-    one.style.display = "inline-block"
+    one.style.display = "flex"
     if(window.innerWidth <= 1000){
       // one.style.transform = `scale(${wt/120})`;
-      one.style.width = `${wt}px`;
-      one.style.height = `${wt}px`;
+      oneItem.style.width = `${wt/4}px`;
+      oneItem.style.height = `${wt/4}px`;
     }else{
-      one.style.width = `${wt}px`;
-      one.style.height = `${wt}px`;
+      // one.style.transform = `scale(${wt/80})`;
+      oneItem.style.width = `${wt/2.5}px`;
+      oneItem.style.height = `${wt/2.5}px`;
     }
     body.style.backgroundColor = "";
     header.classList.remove("main");
