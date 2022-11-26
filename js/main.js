@@ -171,7 +171,6 @@ const topScroll = ()=>{
   let height = height1 - height2
   let scrolled = (winScroll / height) * 100;
   document.querySelector(".scroll-bar").style.width = scrolled + "%";
-  console.log(winScroll)
 }  
 
 
@@ -212,9 +211,9 @@ window.addEventListener("scroll",()=>{
     one.style.opacity = 1
     one.style.display = "block"
     if(window.innerWidth <= 1000){
-      one.style.transform = `scale(${wt/120}) rotate(0.01deg)`;
+      one.style.transform = `scale(${wt/120})`;
     }else{
-      one.style.transform = `scale(${wt/80}) rotate(0.01deg)`;
+      one.style.transform = `scale(${wt/80})`;
     }
     body.style.backgroundColor = "";
     header.classList.remove("main");
