@@ -195,7 +195,8 @@ header nav .head-menu:hover:before{
   background: url(../img/one.svg) no-repeat center;
   background-size: cover;
   filter: blur(0px);
-  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+	image-rendering: pixelated;
 }
 /* .one svg{
   width: 30px;
