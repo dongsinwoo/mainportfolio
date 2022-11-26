@@ -194,6 +194,7 @@ header nav .head-menu:hover:before{
   backface-visibility: hidden;
   background-color: #343434;
   display: inline-block;
+  border: 10px solid #343434;
 }
 /* //one */
 
