@@ -211,9 +211,12 @@ window.addEventListener("scroll",()=>{
     one.style.opacity = 1
     one.style.display = "inline-block"
     if(window.innerWidth <= 1000){
-      one.style.transform = `scale(${wt/120})`;
+      // one.style.transform = `scale(${wt/120})`;
+      one.style.width = `${wt}px`;
+      one.style.height = `${wt}px`;
     }else{
-      one.style.transform = `scale(${wt/80})`;
+      one.style.width = `${wt}px`;
+      one.style.height = `${wt}px`;
     }
     body.style.backgroundColor = "";
     header.classList.remove("main");
