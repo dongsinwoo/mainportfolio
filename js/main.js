@@ -209,7 +209,7 @@ window.addEventListener("scroll",()=>{
   }
   else if(area2<=wt && area7 > wt){
     one.style.opacity = 1
-    one.style.display = "block"
+    one.style.display = "inline-block"
     if(window.innerWidth <= 1000){
       one.style.transform = `scale(${wt/120})`;
     }else{

@@ -192,11 +192,9 @@ header nav .head-menu:hover:before{
   transition: all 0.35s;
   z-index: 100;
   transform: perspective(1px) translateZ(0) rotate(0.001deg);
-}
-.one object{
-  width: 1920px;
-  height: 1920px;
   backface-visibility: hidden;
+  background-color: #343434;
+  display: inline-block;
 }
 /* //one */
 
