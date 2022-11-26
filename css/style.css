@@ -193,7 +193,7 @@ header nav .head-menu:hover:before{
   z-index: 100;
   backface-visibility: hidden;
   background-color: #343434;
-  display: flex;
+  display: inline-block;
 }
 /* //one */
 
@@ -276,6 +276,7 @@ header nav .head-menu:hover:before{
   font-weight: 400;
   font-size: 2rem;
   color: #fff;
+  line-height: 2;
 }
 .profile1-box .profile-all .education .head-t{
   font-size: 2rem;
