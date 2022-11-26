@@ -192,12 +192,14 @@ header nav .head-menu:hover:before{
   z-index: 100;
   transform: perspective(1px) translateZ(0);
   backface-visibility: hidden;
+  background: url(../img/one.svg) no-repeat center;
+  background-size: cover;
 }
-.one svg{
+/* .one svg{
   width: 30px;
   height: 30px;
-  filter : blur(0px);
-}
+  filter: blur(0px);
+} */
 /* //one */
 
 /* 텍스드 픽스드 */
