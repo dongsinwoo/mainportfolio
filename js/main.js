@@ -1,8 +1,3 @@
-// loding
-const loding = document.querySelector(".loding");
-const projectClick = document.querySelector(".profect-click");
-const projectBack = document.querySelector(".back");
-const projectNext = document.querySelector(".next");
 
 // welcome txt
 const wel1 = document.querySelector(".top");
@@ -21,12 +16,12 @@ const header = document.querySelector("header");
 
 // profile
 const profile = document.querySelector(".profile");
+// profile hover
+const skills = document.querySelectorAll(".ski");
+const skills2 = document.querySelectorAll(".ski2");
 // profile btn
 const profileBtn = document.querySelector(".profile-btn");
 const profileBtnP = document.querySelector(".profile-btn p");
-
-const skills = document.querySelectorAll(".ski");
-const skills2 = document.querySelectorAll(".ski2");
 
 // text
 const txt = document.querySelectorAll(".txt-fixed p");
@@ -44,6 +39,29 @@ const innerBar = document.querySelector(".bar");
 const projectFiexd = document.querySelector(".project-fiexd");
 const projectItme = document.querySelectorAll(".project-item");
 const projectXBtn = document.querySelectorAll(".x-btn");
+
+// project item
+const projectClick = document.querySelector(".profect-click");
+const projectBack = document.querySelector(".back");
+
+// profile hover
+let s1Count = 0;
+let s2Count = 0;
+
+// 모바일 터치 슬라이드
+let left_wrap = project.getBoundingClientRect().left;
+let hei = project.offsetHeight;
+let len = slider.children.length;
+let ul_wid = hei * len;
+let per = hei / (window.innerHeight / 30);
+let pos = {
+    prev : 0,
+    now : 0,
+    ul : 0
+}
+let order;
+ 
+
 let ww = window.innerWidth;
 
 // wheel 이벤트 최대치
@@ -56,9 +74,67 @@ let li_pos = 0;
 // bar style수정
 let pct = 0;
 
-// profile count
-let s1Count = 0;
-let s2Count = 0;
+/** profile hover **/
+skills.forEach((skill) => {
+  skill.addEventListener("mouseover",()=>{
+    const set = setInterval(()=>{
+      s1Count+=1
+      skill.innerHTML =`${s1Count}%`
+      if(s1Count >=80){
+        s1Count = 0;
+        clearInterval(set)
+      }
+    },10)
+  })
+});
+
+skills2.forEach((skill) => {
+  skill.addEventListener("mouseover",()=>{
+    const set = setInterval(()=>{
+      s2Count +=1
+      skill.innerHTML =`${s2Count}%`
+      if(s2Count>=50){
+        s2Count = 0;
+        clearInterval(set)
+      }
+    },15)
+  })
+});
+/** //profile hover **/
+
+/** MOBILE**/
+function startSlider(e){
+  e = e || window.event;
+  e.preventDefault();
+  // console.log(e.changedTouches[0]);
+  pos.prev = e.changedTouches[0].clientX - left_wrap -40;
+  if(pos.prev >= pos.now){
+      // console.log('오른쪽으로');
+      pos.ul += per;
+  }else{
+      // console.log('왼쪽으로');
+      pos.ul -= per;
+  }
+  MmoveSlider();
+  pos.now = pos.prev;
+
+}
+/**MOBILE **/
+function MmoveSlider(){
+  slider.style.transform = `translateX(${(pos.ul/2)}px)`;
+  innerBar.style.clipPath =`polygon(0% 0%, ${((pos.ul/50))*-1}% 0%, ${((pos.ul/50))*-1}% 100%, 0% 100%)`
+}
+
+function adjustSlider(){
+  order = Math.round(pos.ul / hei);
+  pos.ul = order * hei;
+  if(pos.ul > 0){pos.ul = 0;}
+  if(pos.ul < -(ul_wid - hei)){pos.ul = -(ul_wid - hei);}
+  MmoveSlider();
+}
+// 모바일 터치 슬라이드
+
+
 
 
 /** 맨위 상단의 scroll gage함수**/
@@ -116,7 +192,6 @@ const onbar = () =>{
 }
 /**project 가로스크롤 여기까지 **/
 
-
 /** project tab menu **/
 const menuTab = (item)=>{
   const tabTarget = item.currentTarget;
@@ -156,33 +231,6 @@ projectXBtn.forEach((item)=>{
   item.addEventListener("click",subDlete)
 })
 
-
-// 숫자 올라가는 함수
-skills.forEach((skill) => {
-  skill.addEventListener("mouseover",()=>{
-    const set = setInterval(()=>{
-      s1Count+=1
-      skill.innerHTML =`${s1Count}%`
-      if(s1Count >=80){
-        s1Count = 0;
-        clearInterval(set)
-      }
-    },10)
-  })
-});
-
-skills2.forEach((skill) => {
-  skill.addEventListener("mouseover",()=>{
-    const set = setInterval(()=>{
-      s2Count +=1
-      skill.innerHTML =`${s2Count}%`
-      if(s2Count>=50){
-        s2Count = 0;
-        clearInterval(set)
-      }
-    },15)
-  })
-});
 
 window.addEventListener("scroll",()=>{
   // area2~10
@@ -301,18 +349,27 @@ window.addEventListener("scroll",()=>{
     headA[0].classList.add("border-color");
     headA[1].classList.remove("border-color");
   }
+
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    profile.classList.remove("up");
+  }
+
 });
 
 window.onbeforeunload = function pushRefresh() {
   window.scrollTo(0, 0);
 };
 
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  project.addEventListener('touchmove',startSlider,false);
+  project.addEventListener('touchend',adjustSlider,false);
+}
+
 window.addEventListener("wheel",(e)=>{
   const ed = e.deltaY
   if(ed > 0){
-    header.style.top = "0" 
-    profileBtn.style.top = "100px"
-    profileBtnP.style.fontSize = "2rem"
+    header.style.top = "0"
+    profile.classList.remove("up");
     
   }else{
     body.classList.remove("stop-scroll");
@@ -324,10 +381,9 @@ window.addEventListener("wheel",(e)=>{
 profileBtn.addEventListener("click",()=>{
   if(profile.className === "profile up"){
     profile.classList.remove("up");
-    profileBtn.style.top = ""
+    
   }else{
     profile.classList.add("up")
-    profileBtn.style.top = "65%"
   }
 })
 
@@ -350,46 +406,46 @@ project.addEventListener("wheel",(e)=>{
 // project click
 projectClick.addEventListener("click",()=>{
   window.scrollTo({top:projectBox+projectHeigth, behavior:"smooth"})
-  loding.style.right = "0"
+  // loding.style.right = "0"
   body.style.overflow= "hidden"
   header.style.opacity = 0
   header.style.pointerEvents = "none"
-  setTimeout(()=>{
-    loding.style.right = ""
-    project.style.opacity = 1
-    project.style.pointerEvents = "all"
-  },3000);
+  project.style.opacity = 1
+  project.style.pointerEvents = "all"
 });
 
 projectBack.addEventListener("click",()=>{
-  loding.style.right = "0"
   body.style.overflow= ""
   header.style.opacity = 1
   header.style.pointerEvents = ""
-  setTimeout(()=>{
-    loding.style.right = ""
-    project.style.opacity = 0
-    project.style.pointerEvents = ""
-  },3000);
+  project.style.opacity = 0
+  project.style.pointerEvents = ""
+  window.scrollTo({top:projectBox+projectHeigth, behavior:"smooth"})
 })
 
 
 window.addEventListener("resize",(e)=>{
-  
+
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // 모바일인 경우
     projectBox
     projectHeigth 
+    ww
   }else{
     window.addEventListener("mouseover",()=>{
         window.location.reload()
       })
     window.scrollTo(0, 0);
     projectBox
-    projectHeigth 
+    projectHeigth
+    ww 
   }
+  left_wrap = project.getBoundingClientRect().left;
+  hei = project.offsetHeight;
+  ul_wid = hei * len;
+  per = hei / (window.innerHeight / 20);
 })
-
+subDlete()
 AOS.init();
 
 

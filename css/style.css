@@ -11,49 +11,6 @@ body{
   overflow-x: hidden;
   overflow-y: scroll;
 }
-/* loding */
-.loding{
-  position: fixed;
-  right: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  z-index: 9999;
-  transition: all 0.5s;
-}
-.loding .loding-text{
-  position: absolute;
-  left: 3%;
-  top: 3%;
-}
-.loding .loding-text h1{
-  font-size: 10rem;
-  font-family: 'Riseling';
-  font-weight: bold;
-  color: #fff;
-}
-.loding .loding-box{
-  height: 20%;
-  width: 100%;
-  background-color: #3f2222;
-}
-.loding .trsi1{
-  transition: all 0.8s;
-}
-.loding .trsi2{
-  transition: all 0.85s;
-}
-.loding .trsi3{
-  transition: all 0.75s;
-}
-.loding .trsi4{
-  transition: all 0.8s;
-}
-.loding .trsi5{
-  transition: all 0.9s;
-}
-/*// loding */
 
 /* scrollbar */
 .scroll-gage{
@@ -86,7 +43,7 @@ body{
   opacity: 0;
   animation: grain 6s steps(10) infinite;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 10005;
 }
 
 @keyframes grain {
@@ -131,7 +88,7 @@ body{
   height: 100%;
   background: url(../img/old.webp) no-repeat center;
   background-size: cover;
-  z-index: 1200;
+  z-index: 12000;
   /* opacity: 0.05; */
   opacity: 0;
   pointer-events: none;
@@ -150,7 +107,7 @@ header{
   box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
   background-color: #fff;
   transition: all 0.35s;
-  z-index: 99;
+  z-index: 10001;
 }
 .main{
   box-shadow: 0 4px 4px rgba(255, 255, 255, 0.7);
@@ -232,7 +189,7 @@ header nav .head-menu:hover:before{
 .profile{
   position: fixed;
   left: 0;
-  top: -600px;
+  top:  -600px;
   background-color: #392f31;
   width: 100%;
   height: 60%;
@@ -389,35 +346,22 @@ header nav .head-menu:hover:before{
 /* profile */
 /* profile btn */
 .profile-btn{
-  position: fixed;
+  position: absolute;
   cursor: pointer;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -15%;
+  left: 5%;
+  transform: rotate(-90deg);
   transition: all 0.5s cubic-bezier(.26,.46,.65,.98);
-  z-index: 999;
+  z-index: 100001;
+  background-color: #646464;
 }
 .profile-btn p{
-  color: #727272;
-  font-size: 3.25rem;
+  color: #fff;
+  font-size: 2rem;
   animation: scale infinite 2000ms linear;
   transition: all 0.35s;
-  font-family: "Riseling";
   font-weight: 500;
-}
-@keyframes scale {
-  25%{
-    transform: scale(.9);
-  }
-  50%{
-    transform: scale(1);
-  }
-  75%{
-    transform: scale(1.1);
-  }
-  100%,0%{
-    transform: scale(1);
-  }
+  padding: 8px 20px;
 }
 
 .profile-btn:hover p{
@@ -435,7 +379,7 @@ header nav .head-menu:hover:before{
   opacity: 1;
   z-index: 100;
   font-family: "Riseling";
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
 }
 .top{
@@ -501,8 +445,8 @@ header nav .head-menu:hover:before{
 /*//텍스트 픽스드 */
 
 .area1{
-  background: url(../img/home3.svg) no-repeat bottom;
-  background-size: contain;
+  background: url(../img/home.svg) no-repeat bottom;
+  background-size: fill;
   background-attachment: fixed;
   background-color: rgb(255, 255, 255);
   position: relative;
@@ -512,7 +456,7 @@ header nav .head-menu:hover:before{
   position: absolute;
   top: 10%;
   right: 10%;
-  width: 132px;
+  width: 210px;
   height: 210px;
   background: url(../img/cmoon.png) no-repeat center;
   background-size: cover;
@@ -533,7 +477,6 @@ header nav .head-menu:hover:before{
 .area1 .moon::after{
   content: '';
   position: absolute;
-  left: -58%;
   background:url(../img/bmoon.png) no-repeat center;
   background-size: cover;
   width: 210px;
@@ -553,8 +496,6 @@ header nav .head-menu:hover:before{
 }
 .area1 .moon p{
   opacity: 0;
-  position: absolute;
-  left: -5px;
   transition: all 0.35s;
   font-size: 2rem;
   color: #343434;
@@ -684,6 +625,7 @@ header nav .head-menu:hover:before{
   background: url(../img/project.png)no-repeat center;
   background-size: cover;
   opacity: 0;
+  transition: all 1s;
   pointer-events: none;
 }
 
@@ -697,14 +639,10 @@ header nav .head-menu:hover:before{
 .project .back-next a{
   color: rgb(224, 224, 224);
   font-size: 4rem;
-  font-family: 'Riseling';
-  font-weight: 500;
+  font-weight: 400;
 }
 .project .back-next .back{
   margin-left: 10vw;
-}
-.project .back-next .next{
-  margin-right: 10vw;
 }
 
 .project .slider{
@@ -729,7 +667,6 @@ header nav .head-menu:hover:before{
   border-left: 5px solid rgba(43, 43, 43, 0.7);
   border-bottom: 5px solid rgba(43, 43, 43, 0.7);
   transition: all .35s;
-  transform: scale(1);
   cursor: pointer;
 }
 .slider li:nth-child(2n){top:-30%;}
@@ -739,14 +676,13 @@ header nav .head-menu:hover:before{
 .project .slider li:nth-child(6){
   pointer-events: none;
 }
-.project .slider .gentle.tab,
-.project .slider .dickies.tab,
-.project .slider .card.tab,
-.project .slider .movies.tab,
-.project .slider .portfolio.tab,
-.project .slider li.tab{
-  transform: scale(0);
+
+
+.project .slider li.tab::before{
+  left: 35%;
+  animation: rotate1 linear infinite both 5000ms;
 }
+
 /* slider img*/
 .project .slider li::before{
   content: '';
@@ -841,6 +777,7 @@ header nav .head-menu:hover:before{
   position: absolute;
   left: 50%;
   bottom: 5%;
+  width: 343px;
   transform: translateX(-50%);
   text-align: center;
 }
@@ -855,25 +792,10 @@ header nav .head-menu:hover:before{
 
 
 /* 반응형 */
-
-@media (max-width: 1700px) {
-  /* home */
-  .bottom, .top{
-    font-size: 4rem;
-  }
-
-}
-
-@media (max-width:1400px) {
-  /* projectslide */
-
-}
-
-
 @media (max-width: 1300px) {
   /* home */
   .bottom, .top{
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
   .top{
     left: 5%;
@@ -884,19 +806,68 @@ header nav .head-menu:hover:before{
 
 }
 
-@media (max-width:1050px) {
+
+
+@media (max-width:1250px) {
   /* projectslide */
- 
+  .profile-filter{
+    width: 850px;
+    object-fit: fill;
+  }
+  .profile-inner{
+    width: 800px;
+  }
+  .area1 .moon{
+    pointer-events: none;
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
   /* home */
   .bottom, .top{
-    font-size: 2.75rem;
+    font-size: 3.5rem;
   }
 
   .txt-fixed p{
     font-size: 2rem;
+  }
+
+  .profile{
+    height:650px;
+    top: -650px;
+  }
+  .profile-filter{
+    width: 620px;
+    object-fit: fill;
+    height: 600px;
+  }
+  .profile-inner{
+    width: 600px;
+    height: 580px;
+  }
+  .profile-inner .flex-box{
+    justify-content: center;
+  }
+  .profile-inner .flex-box .identity{
+    margin-right: 40px;
+  }
+  .profile-inner .flex-box .identity p{
+    font-size: 1.25rem;
+  }
+  .profile-inner .skill{
+    margin: 0 auto;
+    margin-top: 64px;
+    width: 500px;
+  }
+  .profile-inner .skill .skills{
+    flex-wrap: wrap;
+  }
+  .profile-btn{
+    bottom: -10%;
+  }
+  .project{
+    background: url(../img/project-m-back.png) no-repeat center;
+    background-size: cover;
   }
 }
 
@@ -909,11 +880,6 @@ header nav .head-menu:hover:before{
   header nav{
     margin-right: 0;
   }
-
-  .bottom, .top{
-    font-size: 2.25rem;
-  }
-
   .txt-fixed p{
     font-size: 1.5rem;
   }
@@ -928,17 +894,79 @@ header nav .head-menu:hover:before{
     font-size: 1.25rem;
   }
 
-  .bottom, .top{
-    font-size: 1.9rem;
-  }
-
   .txt-fixed p{
     font-size: 1.35rem;
   }
 
   /* project */
+  .profile{
+    height:800px;
+    top: -800px;
+  }
+  .profile-filter{
+    display: none;
+  }
+  .profile-inner{
+    width: 343px;
+    height: 750px;
+  }
+  .profile-inner .flex-box{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .profile-inner .flex-box .identity{
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+  .profile-inner .flex-box .url{
+    margin-right: 0;
+  }
+  .profile-inner .flex-box .identity p{
+    font-size: 1.25rem;
+  }
+  .profile-inner .skill{
+    margin: 0 auto;
+    margin-top: 64px;
+    width: 300px;
+  }
+  .profile-inner .skill .skills{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .profile-inner .skill .skills p{
+    margin-right: 20px;
+  }
+  .profile-inner .skill .skills .js{
+    margin-right: 0;
+  }
+  .profile-inner .skill .skills .ski2{
+    margin-top: 20px;
+  }
+  .profile-btn{
+    bottom: -5%;
+  }
+  .profile-btn p{
+    font-size: 1.25rem;
+  }
 
-
+  /* project item */
+  .project-fiexd .project-item{
+    width: 343px;
+    height: 700px;
+  }
+  .project-fiexd .project-item .img-box{
+    width: 300px;
+    height: 200px;   
+  }
+  .project-fiexd .project-item .main-text{
+    width: 300px;
+  }
+  .project-fiexd .project-item .main-text .haed{
+    font-size: 1.25rem;
+  }
+  .project-fiexd .project-item .main-text .sub{
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 500px) {
@@ -950,20 +978,25 @@ header nav .head-menu:hover:before{
   header nav a:nth-child(3){
     margin-right: 0;
   }
-  header nav a:last-child{
-    display: none;
-  }
 
   .bottom, .top{
-    font-size: 1.5rem;
+    font-size: 2.25rem;
   }
+
 
   .txt-fixed p{
     font-size: 1.15rem;
   }
 
   /*project*/
-  
+  .project-box h1{
+    font-size: 6.25rem;
+  }
+  .project-box .footer{
+    font-size: 0.625rem;
+  }
 
-
+  .project .back-next a{
+    font-size: 2.5rem;
+  }
 }
