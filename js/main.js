@@ -1,3 +1,8 @@
+// loding
+const loding = document.querySelector(".loding");
+const projectClick = document.querySelector(".profect-click");
+const projectBack = document.querySelector(".back");
+const projectNext = document.querySelector(".next");
 
 // welcome txt
 const wel1 = document.querySelector(".top");
@@ -14,157 +19,49 @@ const body = document.body
 const headA = document.querySelectorAll(".head-menu");
 const header = document.querySelector("header");
 
-// pagenation
-const pagenations = document.querySelectorAll(".pagenation span");
+// profile
+const profile = document.querySelector(".profile");
+// profile btn
+const profileBtn = document.querySelector(".profile-btn");
+const profileBtnP = document.querySelector(".profile-btn p");
+
+const skills = document.querySelectorAll(".ski");
+const skills2 = document.querySelectorAll(".ski2");
 
 // text
 const txt = document.querySelectorAll(".txt-fixed p");
 const txtBox = document.querySelector(".txt-fixed");
 
-// profile
-const profileBox = document.querySelector(".profile1-box").offsetTop;
-
 // project
 const projectBox = document.querySelector(".project-box").offsetTop;
 const projectHeigth = document.querySelector(".project-box").clientHeight;
+const project = document.querySelector(".project");
+const slider = document.querySelector(".slider");
+const s_wid = slider.offsetWidth;
+const s_li = slider.querySelectorAll("li");
+const innerBar = document.querySelector(".bar");
 
-// footer
-const footerBox = document.querySelector(".footer").offsetTop;
-const footerHeight = document.querySelector(".footer").clientHeight;
+const projectFiexd = document.querySelector(".project-fiexd");
+const projectItme = document.querySelectorAll(".project-item");
+const projectXBtn = document.querySelectorAll(".x-btn");
+let ww = window.innerWidth;
 
-// 슬라이드
-const projectAll = document.querySelector(".pc-slide")
-const projectSlide = document.querySelector(".pc-mask");
-const projectItems = document.querySelectorAll(".pc-item");
-const arrow = document.querySelector(".pc-arrow");
+// wheel 이벤트 최대치
+let s_move_max = (s_wid - (ww/1.5)) * -1
 
-// 슬라이드 헤드
-const webSite = document.querySelector(".pc-website");
-const front = document.querySelector(".pc-mini");
-const app = document.querySelector(".pc-app");
+// 포지션값
+let s_pos = 0;
+let li_pos = 0;
 
-// 슬라이드 전체 횟수
-const page = document.querySelector(".pc-page");
+// bar style수정
+let pct = 0;
 
-// m-슬라이드
-const MprojectAll = document.querySelector(".m-slide");
-const MprojectSlide = document.querySelector(".m-mask");
-const MprojectItems = document.querySelectorAll(".m-item");
-const Marrow = document.querySelector(".m-arrow");
-
-// m-슬라이드 헤드
-const MwebSite = document.querySelector(".m-website");
-const Mfront = document.querySelector(".m-mini");
-const Mapp = document.querySelector(".m-app");
-
-// m-슬라이드 전체 횟수
-const Mpage = document.querySelector(".m-page");
-
-const ww = window.innerWidth;
+// profile count
+let s1Count = 0;
+let s2Count = 0;
 
 
-// 슬라이드 크기  + 움직이는 값
-let margin = 100;
-let itemWidth = projectItems[0].clientWidth + margin;
-
-
-// 슬라이드 메인 카운트/트렌슬레이트
-let projectCount = 0; //슬라이드 번호
-let translate = 0; //슬라이드 위치값
-
-let pagesCount = projectItems.length;
-let pageCount =  1;
-
-
-// m-슬라이드 크기  + 움직이는 값
-let Mmargin = 100;
-let MitemWidth = MprojectItems[0].clientWidth + margin;
-
-
-// 슬라이드 메인 카운트/트렌슬레이트
-let MprojectCount = 0; //슬라이드 번호
-let Mtranslate = 0; //슬라이드 위치값
-
-let MpagesCount = MprojectItems.length;
-let MpageCount =  1;
-
-const slide = (e)=>{
-  // 슬라이드 메인
-  
-  e.preventDefault();
-  console.log(projectCount)
-  if(e.target.className === "right"){
-    if(projectCount !== (projectItems.length/2)-1){
-      translate -= itemWidth;
-      projectSlide.style.transform = `translateX(${translate*2}px)`
-      projectCount +=1;
-      pageCount+=1;
-    }
-  }else if(e.target.className === "left"){
-    if(projectCount !== 0){
-      translate += itemWidth;
-      projectSlide.style.transform= `translateX(${translate*2}px)`;
-      projectCount -=1;
-      pageCount-=1;
-    }
-  } 
-
-  // 슬라이드 헤드 텍스트 바꿔주기
-  if(projectCount===0){
-    webSite.style.display = "block";
-    front.style.display = "none";
-    app.style.display = "none";
-  }else if(projectCount === 1){
-    webSite.style.display = "none";
-    front.style.display = "block";
-    app.style.display = "none";
-  }else if(projectCount === 2){
-    webSite.style.display = "none";
-    front.style.display = "none";
-    app.style.display = "block";
-  }
-
-  page.textContent = `${pageCount} / ${pagesCount/2}`
-}
-
-const mSlide= (e)=>{
-  e.preventDefault()
-  console.log(MprojectCount);
-  if(e.target.className === "right"){
-    if(MprojectCount !== MprojectItems.length-1){
-      Mtranslate -= MitemWidth;
-      MprojectSlide.style.transform = `translateX(${Mtranslate}px)`
-      MprojectCount +=1;
-      MpageCount+=1;
-    }
-  }else if(e.target.className === "left"){
-    if(MprojectCount !== 0){
-      Mtranslate += MitemWidth;
-      MprojectSlide.style.transform= `translateX(${Mtranslate}px)`;
-      MprojectCount -=1;
-      MpageCount-=1;
-    }
-  } 
-
-  // 슬라이드 헤드 텍스트 바꿔주기
-  if(MprojectCount===0 || MprojectCount===1 ){
-    MwebSite.style.display = "block";
-    Mfront.style.display = "none";
-    Mapp.style.display = "none";
-  }else if(MprojectCount === 2 || MprojectCount == 3 ){
-    MwebSite.style.display = "none";
-    Mfront.style.display = "block";
-    Mapp.style.display = "none";
-  }else if(MprojectCount === 4 || MprojectCount === 5){
-    MwebSite.style.display = "none";
-    Mfront.style.display = "none";
-    Mapp.style.display = "block";
-  }
-
-  Mpage.textContent = `${MpageCount} / ${MpagesCount}`
-}
-
-
+/** 맨위 상단의 scroll gage함수**/
 const topScroll = ()=>{
   let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   let height1 = document.documentElement.scrollHeight; 
@@ -174,11 +71,118 @@ const topScroll = ()=>{
   document.querySelector(".scroll-bar").style.width = scrolled + "%";
 }  
 
+/**porject 가로스크롤**/
+const moveSlider = (eDeltaY)=>{
+  s_pos -= eDeltaY;
+  if(s_pos < s_move_max){
+    s_pos ===s_move_max;
+    return ; 
+  }else if(s_pos > 0){
+    s_pos = 0;
+    return ;
+  }
 
-page.textContent = `${pageCount} / ${pagesCount/2}`
-Mpage.textContent = `${MpageCount} / ${MpagesCount}`
-arrow.addEventListener("click",slide);
-Marrow.addEventListener("click",mSlide);
+  slider.style.transform = `translateX(${s_pos}px)`
+  liUpdown(eDeltaY);
+}
+
+/**project li 움직임**/
+const liUpdown = (eDeltaY)=>{
+  li_pos += eDeltaY;
+  
+  for(let i = 0; i < s_li.length; i++){
+    if(i%2 !==0 ){
+      if(s_pos ===0){
+        li_pos = 0
+        s_li[i].style.transform = ``;
+      }else{
+        s_li[i].style.transform = `translateY(${li_pos / (i*6)}px) scale(1)`;
+      }
+    }else{
+      if(s_pos ===0){
+        li_pos = 0
+        s_li[i].style.transform = ``;
+      }else{
+        s_li[i].style.transform = `translateY(${-li_pos / (i*6)}px) scale(1)`;
+      }
+  }
+  }
+}
+
+/**project 아래 게이지**/
+const onbar = () =>{
+  pct = s_pos * 100 / s_move_max;
+  innerBar.style.clipPath =`polygon(0% 0%, ${pct}% 0%, ${pct}% 100%, 0% 100%)`
+}
+/**project 가로스크롤 여기까지 **/
+
+
+/** project tab menu **/
+const menuTab = (item)=>{
+  const tabTarget = item.currentTarget;
+  const target = tabTarget.dataset.tab;
+  s_li.forEach((menu)=>{
+      menu.classList.remove("tab");
+  })
+  projectItme.forEach((ob)=>{
+      ob.classList.remove("target");
+  })
+  document.querySelector("#"+target).classList.add("target");
+  tabTarget.classList.add("tab");
+  console.log(tabTarget)
+};
+
+/** 탭 서브메뉴 없애주는 함수 */
+const subDlete = ()=>{
+  projectFiexd.style.opacity = 0;
+  projectFiexd.style.pointerEvents = "";
+  s_li.forEach((menu)=>{
+    menu.classList.remove("tab");
+  })
+  projectItme.forEach((item)=>{
+    item.classList.remove("target");
+  })
+};
+
+s_li.forEach((item)=>{
+  item.addEventListener("click",(e)=>{
+      projectFiexd.style.opacity = 1;
+      projectFiexd.style.pointerEvents = "all";
+      menuTab(e)
+  });
+})
+
+projectXBtn.forEach((item)=>{
+  item.addEventListener("click",subDlete)
+})
+
+
+// 숫자 올라가는 함수
+skills.forEach((skill) => {
+  skill.addEventListener("mouseover",()=>{
+    const set = setInterval(()=>{
+      s1Count+=1
+      skill.innerHTML =`${s1Count}%`
+      if(s1Count >=80){
+        s1Count = 0;
+        clearInterval(set)
+      }
+    },10)
+  })
+});
+
+skills2.forEach((skill) => {
+  skill.addEventListener("mouseover",()=>{
+    const set = setInterval(()=>{
+      s2Count +=1
+      skill.innerHTML =`${s2Count}%`
+      if(s2Count>=50){
+        s2Count = 0;
+        clearInterval(set)
+      }
+    },15)
+  })
+});
 
 window.addEventListener("scroll",()=>{
   // area2~10
@@ -187,6 +191,8 @@ window.addEventListener("scroll",()=>{
   const area8 = document.querySelector(".area8").offsetTop;
   const area9 = document.querySelector(".area9").offsetTop;
   const area10 = document.querySelector(".area10").offsetTop;
+  const noise = document.querySelector(".noise");
+  const old = document.querySelector(".old");
 
   const wt = window.pageYOffset;
 
@@ -195,13 +201,18 @@ window.addEventListener("scroll",()=>{
   
   topScroll()
 
+  profile.classList.remove("up");
+  if(wt === 0){
+    header.style.top = "-80px"
+    profileBtn.style.top = ""
+    profileBtnP.style.fontSize = ""
+    profile.style.top = ""
+  }
   // area2 ~ area7
   if(area2>wt){
     oneItem.style.width = ``;
     oneItem.style.height = ``;
     one.style.opacity = 0;
-    pagenations[0].classList.add("scale12");
-    pagenations[0].classList.remove("scale12w");
     body.style.backgroundColor = "";
     header.classList.remove("main");
     headA.forEach((item)=>{
@@ -222,23 +233,25 @@ window.addEventListener("scroll",()=>{
       oneItem.style.height = `${wt/2.5}px`;
     }
     body.style.backgroundColor = "";
+    profileBtnP.style.color = ""
+    old.style.opacity = "";
+    noise.style.opacity = "";
     header.classList.remove("main");
     headA.forEach((item)=>{
       item.classList.add("head-menu");
       item.classList.remove("head-menu2");
     })
-    pagenations[0].classList.add("scale12");
-    pagenations[0].classList.remove("scale12w");
   }else if(area7< wt){
-    body.style.backgroundColor = "#343434";
+    body.style.backgroundColor = "#392f31";
+    profileBtnP.style.color = "#fff"
     one.style.display = "none";
+    old.style.opacity = "0.05";
+    noise.style.opacity = "0.03";
     header.classList.add("main");
     headA.forEach((item)=>{
       item.classList.add("head-menu2");
       item.classList.remove("head-menu");
     })
-    pagenations[0].classList.add("scale12w");
-    pagenations[0].classList.remove("scale12");
  
   }
 
@@ -279,54 +292,44 @@ window.addEventListener("scroll",()=>{
     })
   }
 
-  // ~ footer 까지
-  if((area10+(area2/2))<=wt && projectBox-(area2/2)> wt){
+  // ~ 끝까지
+   if(projectBox-(area2/2)<=wt){
     headA[0].classList.remove("border-color");
     headA[1].classList.add("border-color");
-    headA[2].classList.remove("border-color");
-    headA[3].classList.remove("border-color");
-
-    pagenations[0].classList.remove("scale12w");
-    pagenations[1].classList.add("scale12w");
-    pagenations[2].classList.remove("scale12w");
-    pagenations[3].classList.remove("scale12w");
-
-  }else if(projectBox-(area2/2)<=wt && footerBox-(area2/2) > wt){
-    headA[0].classList.remove("border-color");
-    headA[1].classList.remove("border-color");
-    headA[2].classList.add("border-color");
-    headA[3].classList.remove("border-color");
-
-    pagenations[0].classList.remove("scale12w");
-    pagenations[1].classList.remove("scale12w");
-    pagenations[2].classList.add("scale12w");
-    pagenations[3].classList.remove("scale12w");
-  }else if(footerBox-(area2/2) <= wt){
-    headA[0].classList.remove("border-color");
-    headA[1].classList.remove("border-color");
-    headA[2].classList.remove("border-color");
-    headA[3].classList.add("border-color");
-
-    pagenations[0].classList.remove("scale12w");
-    pagenations[1].classList.remove("scale12w");
-    pagenations[2].classList.remove("scale12w");
-    pagenations[3].classList.add("scale12w");
+  
   }else{
     headA[0].classList.add("border-color");
     headA[1].classList.remove("border-color");
-    headA[2].classList.remove("border-color");
-    headA[3].classList.remove("border-color");
-
-    pagenations[1].classList.remove("scale12w");
-    pagenations[2].classList.remove("scale12w");
-    pagenations[3].classList.remove("scale12w");
   }
-
 });
 
 window.onbeforeunload = function pushRefresh() {
   window.scrollTo(0, 0);
 };
+
+window.addEventListener("wheel",(e)=>{
+  const ed = e.deltaY
+  if(ed > 0){
+    header.style.top = "0" 
+    profileBtn.style.top = "100px"
+    profileBtnP.style.fontSize = "2rem"
+    
+  }else{
+    body.classList.remove("stop-scroll");
+  }
+ 
+})
+
+//profile
+profileBtn.addEventListener("click",()=>{
+  if(profile.className === "profile up"){
+    profile.classList.remove("up");
+    profileBtn.style.top = ""
+  }else{
+    profile.classList.add("up")
+    profileBtn.style.top = "65%"
+  }
+})
 
 
 // headA click
@@ -334,49 +337,56 @@ headA[0].addEventListener("click",()=>{
   scrollTo({top: 0 , behavior:"smooth"});
 })
 headA[1].addEventListener("click",()=>{
-  scrollTo({top: profileBox , behavior:"smooth"});
-})
-headA[2].addEventListener("click",()=>{
   scrollTo({top: projectBox , behavior:"smooth"});
-  console.log(projectBox)
-})
-headA[3].addEventListener("click",()=>{
-  scrollTo({top: footerBox+footerHeight , behavior:"smooth"});
 })
 
-// pagenations click 
-pagenations[0].addEventListener("click",()=>{
-  scrollTo({top: 0 , behavior:"smooth"});
+// project wheel
+project.addEventListener("wheel",(e)=>{
+  e.preventDefault;
+  moveSlider(e.deltaY);
+  onbar();
+});
+
+// project click
+projectClick.addEventListener("click",()=>{
+  window.scrollTo({top:projectBox+projectHeigth, behavior:"smooth"})
+  loding.style.right = "0"
+  body.style.overflow= "hidden"
+  header.style.opacity = 0
+  header.style.pointerEvents = "none"
+  setTimeout(()=>{
+    loding.style.right = ""
+    project.style.opacity = 1
+    project.style.pointerEvents = "all"
+  },3000);
+});
+
+projectBack.addEventListener("click",()=>{
+  loding.style.right = "0"
+  body.style.overflow= ""
+  header.style.opacity = 1
+  header.style.pointerEvents = ""
+  setTimeout(()=>{
+    loding.style.right = ""
+    project.style.opacity = 0
+    project.style.pointerEvents = ""
+  },3000);
 })
-pagenations[1].addEventListener("click",()=>{
-  scrollTo({top: profileBox , behavior:"smooth"});
-})
-pagenations[2].addEventListener("click",()=>{
-  scrollTo({top: projectBox , behavior:"smooth"});
-})
-pagenations[3].addEventListener("click",()=>{
-  scrollTo({top: footerBox+footerHeight, behavior:"smooth"});
-})
+
 
 window.addEventListener("resize",(e)=>{
   
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // 모바일인 경우
-    profileBox
     projectBox
     projectHeigth 
-    footerBox
-    footerHeight
   }else{
     window.addEventListener("mouseover",()=>{
         window.location.reload()
       })
     window.scrollTo(0, 0);
-    profileBox
     projectBox
     projectHeigth 
-    footerBox
-    footerHeight
   }
 })
 
