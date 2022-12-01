@@ -50,10 +50,10 @@ let s2Count = 0;
 
 // 모바일 터치 슬라이드
 let left_wrap = project.getBoundingClientRect().left;
-let hei = project.offsetHeight;
+let hei = s_li[0].offsetHeight;
 let len = slider.children.length;
 let ul_wid = hei * len;
-let per = hei / (window.innerHeight / 30);
+let per = hei / (window.innerHeight / 40);
 let pos = {
     prev : 0,
     now : 0,
@@ -107,13 +107,13 @@ function startSlider(e){
   e = e || window.event;
   e.preventDefault();
   // console.log(e.changedTouches[0]);
-  pos.prev = e.changedTouches[0].clientX - left_wrap -20;
+  pos.prev = e.changedTouches[0].clientX - left_wrap -40;
   if(pos.prev >= pos.now){
       // console.log('오른쪽으로');
-      pos.ul += per/2;
+      pos.ul += per;
   }else{
       // console.log('왼쪽으로');
-      pos.ul -= per/2;
+      pos.ul -= per;
   }
   MmoveSlider();
   pos.now = pos.prev;
@@ -129,7 +129,7 @@ function adjustSlider(){
   order = Math.round(pos.ul / hei);
   pos.ul = order * hei;
   if(pos.ul > 0){pos.ul = 0;}
-  if(pos.ul < -(ul_wid - hei)){pos.ul = -(ul_wid - hei);}
+  if(pos.ul < -(ul_wid*3)){pos.ul < -(ul_wid*3)}
   MmoveSlider();
 }
 // 모바일 터치 슬라이드
@@ -366,6 +366,8 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
   project.addEventListener('touchmove',startSlider,false);
   project.addEventListener('touchend',adjustSlider,false);
 }
+project.addEventListener('touchmove',startSlider,false);
+project.addEventListener('touchend',adjustSlider,false);
 
 window.addEventListener("wheel",(e)=>{
   const ed = e.deltaY

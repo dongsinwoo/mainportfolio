@@ -802,6 +802,9 @@ header nav .head-menu:hover:before{
     right: 5%;
   }
 
+  .area1{
+    background-attachment:scroll;
+  }
 }
 
 
