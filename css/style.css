@@ -104,14 +104,8 @@ header{
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
-  background-color: #fff;
   transition: all 0.35s;
   z-index: 10001;
-}
-.main{
-  box-shadow: 0 4px 4px rgba(255, 255, 255, 0.7);
-  background-color: #392f31;
 }
 .main nav a{
   color: #fff;
@@ -190,7 +184,7 @@ header nav .head-menu:hover:before{
   position: fixed;
   left: 0;
   top:  -600px;
-  background-color: #392f31;
+  background-color: #505050;
   width: 100%;
   height: 60%;
   transition: all 0.5s cubic-bezier(.26,.46,.65,.98);
@@ -353,7 +347,7 @@ header nav .head-menu:hover:before{
   transform: rotate(-90deg);
   transition: all 0.5s cubic-bezier(.26,.46,.65,.98);
   z-index: 100001;
-  background-color: #646464;
+  background-color: #634e4e;
 }
 .profile-btn p{
   color: #fff;
@@ -445,8 +439,8 @@ header nav .head-menu:hover:before{
 /*//텍스트 픽스드 */
 
 .area1{
-  background: url(../img/home.svg) no-repeat bottom;
-  background-size: fill;
+  background: url(../img/home.svg) no-repeat center;
+  background-size: cover;
   background-attachment: fixed;
   background-color: rgb(255, 255, 255);
   position: relative;
@@ -529,7 +523,7 @@ header nav .head-menu:hover:before{
 .project-fiexd .project-item{
   position: absolute;
   width: 700px;
-  height:800px;
+  height:auto;
   background-color: #fff;
   overflow-y: scroll;
   transition: all .35s;
@@ -579,6 +573,7 @@ header nav .head-menu:hover:before{
   width: 100%;
   text-align: center;
   margin-top: 7.25rem;
+  margin-bottom: 3rem;
 }
 .project-fiexd .project-item .a-btn{
   font-size: 1.5rem;
@@ -631,7 +626,7 @@ header nav .head-menu:hover:before{
 
 .project .back-next{
   position: absolute;
-  top: 100px;
+  top: 5%;
   display: flex;
   justify-content: start;
   width: 100%;
@@ -952,7 +947,6 @@ header nav .head-menu:hover:before{
   /* project item */
   .project-fiexd .project-item{
     width: 343px;
-    height: 700px;
   }
   .project-fiexd .project-item .img-box{
     width: 300px;

@@ -107,7 +107,7 @@ function startSlider(e){
   e = e || window.event;
   e.preventDefault();
   // console.log(e.changedTouches[0]);
-  pos.prev = e.changedTouches[0].clientX - left_wrap -40;
+  pos.prev = e.changedTouches[0].clientX - left_wrap -20;
   if(pos.prev >= pos.now){
       // console.log('오른쪽으로');
       pos.ul += per;
@@ -356,10 +356,6 @@ window.addEventListener("scroll",()=>{
 
 });
 
-window.onbeforeunload = function pushRefresh() {
-  window.scrollTo(0, 0);
-};
-
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
   project.addEventListener('touchmove',startSlider,false);
   project.addEventListener('touchend',adjustSlider,false);
@@ -406,21 +402,22 @@ project.addEventListener("wheel",(e)=>{
 // project click
 projectClick.addEventListener("click",()=>{
   window.scrollTo({top:projectBox+projectHeigth, behavior:"smooth"})
-  // loding.style.right = "0"
   body.style.overflow= "hidden"
   header.style.opacity = 0
   header.style.pointerEvents = "none"
   project.style.opacity = 1
   project.style.pointerEvents = "all"
+  profileBtn.style.bottom = "5%"
 });
 
 projectBack.addEventListener("click",()=>{
+  window.scrollTo({top:projectBox+projectHeigth, behavior:"smooth"})
   body.style.overflow= ""
   header.style.opacity = 1
   header.style.pointerEvents = ""
   project.style.opacity = 0
   project.style.pointerEvents = ""
-  window.scrollTo({top:projectBox+projectHeigth, behavior:"smooth"})
+  profileBtn.style.bottom = ""
 })
 
 
