@@ -110,10 +110,10 @@ function startSlider(e){
   pos.prev = e.changedTouches[0].clientX - left_wrap -20;
   if(pos.prev >= pos.now){
       // console.log('오른쪽으로');
-      pos.ul += per;
+      pos.ul += per/2;
   }else{
       // console.log('왼쪽으로');
-      pos.ul -= per;
+      pos.ul -= per/2;
   }
   MmoveSlider();
   pos.now = pos.prev;
@@ -352,6 +352,12 @@ window.addEventListener("scroll",()=>{
 
   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     profile.classList.remove("up");
+  }
+
+  if(wt >= 0 && wt <30){
+    header.style.top=""
+  }else{
+    header.style.top="0"
   }
 
 });
