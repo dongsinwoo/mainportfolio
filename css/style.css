@@ -670,8 +670,7 @@ header nav .head-menu:hover:before{
 .slider li:nth-child(2n){top:-30%;}
 .slider li:nth-child(3n){top:30%;}
 
-.project .slider li:last-child,
-.project .slider li:nth-child(6){
+.project .slider li:last-child{
   pointer-events: none;
 }
 
@@ -728,8 +727,8 @@ header nav .head-menu:hover:before{
   background: url(../img/portfoliolecode.png)no-repeat center;
   background-size: cover;
 }
-.project .slider .x::before{
-  background: url(../img/lecode.png)no-repeat center;
+.project .slider .todolist::before{
+  background: url(../img/todolecode.png)no-repeat center;
   background-size: cover;
 }
 
